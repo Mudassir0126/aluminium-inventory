@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API from '../api';
 
 const AddItem = () => {
   const [item, setItem] = useState({
@@ -12,10 +13,16 @@ const AddItem = () => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(item); // Replace this with API call
-    alert('Item added successfully!');
+    try {
+      await API.post('/items', item);
+      alert('Item added successfully!');
+      setItem({ name: '', category: '', unit: '', description: '' });
+    } catch (error) {
+      console.error(error);
+      alert('Error adding item');
+    }
   };
 
   return (

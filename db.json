@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "2551",
+      "name": "2002",
+      "category": "Aluminium",
+      "unit": "43",
+      "description": "items"
+    },
+    {
+      "id": "95d3",
+      "name": "2002",
+      "category": "Aluminium",
+      "unit": "43",
+      "description": "asd"
+    }
+  ],
+  "stock": [
+    {
+      "id": "5270",
+      "itemName": "2001",
+      "quantity": "34",
+      "transactionType": "out",
+      "date": "2025-04-25",
+      "notes": "out"
+    }
+  ]
+}

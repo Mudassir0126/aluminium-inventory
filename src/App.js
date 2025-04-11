@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3">
-          <Link className="navbar-brand" to="/">Aluminium Inventory</Link>
+          <Link className="navbar-brand" to="/">Lanka Swisstek</Link>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API from '../api';
 
 const StockTransaction = () => {
   const [stock, setStock] = useState({
@@ -13,10 +14,16 @@ const StockTransaction = () => {
     setStock({ ...stock, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(stock); // Replace this with API call
-    alert(`Stock ${stock.transactionType} recorded!`);
+    try {
+      await API.post('/stock', stock);
+      alert(`Stock ${stock.transactionType} recorded!`);
+      setStock({ itemName: '', quantity: '', transactionType: 'in', date: '', notes: '' });
+    } catch (error) {
+      console.error(error);
+      alert('Error submitting stock entry');
+    }
   };
 
   return (
