@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3">
-          <Link className="navbar-brand" to="/">Lanka Swisstek</Link>
+          <Link className="navbar-brand" to="/">Lanka Swisstek Inventory</Link>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
@@ -26,7 +26,7 @@ function App() {
                 <Link className="nav-link" to="/add-item">Add Item</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/stockTransaction">StockTransaction</Link>
+                <Link className="nav-link" to="/stockTransaction">Stock Transaction</Link>
               </li>
 
             </ul>

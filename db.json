@@ -2,17 +2,45 @@
   "items": [
     {
       "id": "2551",
-      "name": "2002",
+      "name": "SA-2001",
       "category": "Aluminium",
       "unit": "43",
-      "description": "items"
+      "description": "Sash"
     },
     {
       "id": "95d3",
-      "name": "2002",
+      "name": "SA-2002",
       "category": "Aluminium",
       "unit": "43",
-      "description": "asd"
+      "description": "Frame"
+    },
+    {
+      "id": "5610",
+      "name": "SA-2008",
+      "category": "Aluminium",
+      "unit": "60",
+      "description": "Sash"
+    },
+    {
+      "id": "e37c",
+      "name": "SA-1001",
+      "category": "Aluminium",
+      "unit": "50",
+      "description": "Frame"
+    },
+    {
+      "id": "b758",
+      "name": "SA-1002",
+      "category": "Aluminium",
+      "unit": "30",
+      "description": "Sash"
+    },
+    {
+      "id": "b0e2",
+      "name": "SA-1003",
+      "category": "Aluminium",
+      "unit": "80",
+      "description": "Alu"
     }
   ],
   "stock": [

@@ -5,6 +5,7 @@ const Items = () => {
   const [items, setItems] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
   const [formData, setFormData] = useState({ name: '', category: '', unit: '', description: '' });
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Fetch all items
   const fetchItems = async () => {
@@ -39,10 +40,25 @@ const Items = () => {
     fetchItems();
   };
 
+  const filteredItems = items.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <h3>Items List</h3>
-      <table className="table table-bordered table-hover mt-4">
+
+      <div className="mb-3 mt-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search by name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      <table className="table table-bordered table-hover mt-2">
         <thead className="table-light">
           <tr>
             <th>Name</th>
@@ -53,31 +69,37 @@ const Items = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map(item => (
-            editingItem === item.id ? (
-              <tr key={item.id}>
-                <td><input type="text" name="name" value={formData.name} onChange={handleEditChange} className="form-control" /></td>
-                <td><input type="text" name="category" value={formData.category} onChange={handleEditChange} className="form-control" /></td>
-                <td><input type="text" name="unit" value={formData.unit} onChange={handleEditChange} className="form-control" /></td>
-                <td><input type="text" name="description" value={formData.description} onChange={handleEditChange} className="form-control" /></td>
-                <td>
-                  <button className="btn btn-sm btn-success me-2" onClick={handleEditSubmit}>Save</button>
-                  <button className="btn btn-sm btn-secondary" onClick={() => setEditingItem(null)}>Cancel</button>
-                </td>
-              </tr>
-            ) : (
-              <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>{item.category}</td>
-                <td>{item.unit}</td>
-                <td>{item.description}</td>
-                <td>
-                  <button className="btn btn-sm btn-warning me-2" onClick={() => handleEditClick(item)}>Edit</button>
-                  <button className="btn btn-sm btn-danger" onClick={() => handleDelete(item.id)}>Delete</button>
-                </td>
-              </tr>
+          {filteredItems.length > 0 ? (
+            filteredItems.map(item =>
+              editingItem === item.id ? (
+                <tr key={item.id}>
+                  <td><input type="text" name="name" value={formData.name} onChange={handleEditChange} className="form-control" /></td>
+                  <td><input type="text" name="category" value={formData.category} onChange={handleEditChange} className="form-control" /></td>
+                  <td><input type="text" name="unit" value={formData.unit} onChange={handleEditChange} className="form-control" /></td>
+                  <td><input type="text" name="description" value={formData.description} onChange={handleEditChange} className="form-control" /></td>
+                  <td>
+                    <button className="btn btn-sm btn-success me-2" onClick={handleEditSubmit}>Save</button>
+                    <button className="btn btn-sm btn-secondary" onClick={() => setEditingItem(null)}>Cancel</button>
+                  </td>
+                </tr>
+              ) : (
+                <tr key={item.id}>
+                  <td>{item.name}</td>
+                  <td>{item.category}</td>
+                  <td>{item.unit}</td>
+                  <td>{item.description}</td>
+                  <td>
+                    <button className="btn btn-sm btn-warning me-2" onClick={() => handleEditClick(item)}>Edit</button>
+                    <button className="btn btn-sm btn-danger" onClick={() => handleDelete(item.id)}>Delete</button>
+                  </td>
+                </tr>
+              )
             )
-          ))}
+          ) : (
+            <tr>
+              <td colSpan="5" className="text-center text-muted">No items found</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
